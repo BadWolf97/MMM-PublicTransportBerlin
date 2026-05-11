@@ -7,6 +7,7 @@ Module.register("MMM-PublicTransportBerlin", {
     stationId: "900160003",             // The ID of the station
     directionStationId: "",             // The stationId of the next station in which direction departures should be shown
     ignoredLines: [],                   // Which lines should be ignored? (comma-separated list of line names)
+    ignoredDestinations: [],            // Which destinations should be ignored? (comma-separated list of destinations)
     excludedTransportationTypes: "",    // Which transportation types should not be shown on the mirror? (comma-separated list of types) possible values: bus,tram,suburban,subway,ferry
     marqueeLongDirections: true,        // Use Marquee effect for long station names?
     travelTimeToStation: 10,            // How long do you need to walk/bike to the next Station?
@@ -67,6 +68,11 @@ Module.register("MMM-PublicTransportBerlin", {
       // Handle missing ignored lines
       if (typeof this.config.ignoredLines === "undefined") {
         this.config.ignoredLines = [];
+      }
+
+      // Handle missing ignored destinations
+      if (typeof this.config.ignoredDestinations === "undefined") {
+        this.config.ignoredDestinations = [];
       }
 
       // set minimum interval to 30 seconds
