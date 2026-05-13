@@ -121,7 +121,7 @@ module.exports = class BvgFetcher {
       }
     });
 
-    departuresData.departuresArray.sort(this.compareTimes);
+    departuresData.departuresArray.sort(BvgFetcher.compareTimes);
     return departuresData;
   }
 
