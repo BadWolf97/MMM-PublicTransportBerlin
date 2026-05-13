@@ -34,7 +34,7 @@
     "demo": "cd ../../ && MM_CONFIG_FILE=modules/MMM-PublicTransportBerlin/demo.config.js node --run start:dev",
     "lint": "eslint && prettier . --check",
     "lint:fix": "eslint --fix && prettier . --write",
-    "prepare": "[ -f node_modules/.bin/husky ] && husky || echo info for developers: husky is not installed.",
+    "prepare": "simple-git-hooks || true",
     "query": "node ./convenience/query_stations.mjs bvg",
     "test": "node --run lint && node --run test:unit && node --run test:spelling",
     "test:unit": "node --test tests/**/*.test.js",
@@ -44,6 +44,9 @@
     "hafas-client": "^6.3.6",
     "vbb-line-colors": "^1.0.5",
     "vbb-short-station-name": "^1.0.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "*": [
@@ -61,9 +64,9 @@
     "eslint": "^10.3.0",
     "eslint-plugin-import-x": "^4.16.2",
     "globals": "^17.6.0",
-    "husky": "^9.1.7",
     "lint-staged": "^17.0.3",
-    "prettier": "^3.8.3"
+    "prettier": "^3.8.3",
+    "simple-git-hooks": "^2.13.1"
   },
   "engines": {
     "node": ">=16"
