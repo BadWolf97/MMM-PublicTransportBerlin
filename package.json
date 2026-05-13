@@ -36,7 +36,8 @@
     "lint:fix": "eslint --fix && prettier . --write",
     "prepare": "[ -f node_modules/.bin/husky ] && husky || echo info for developers: husky is not installed.",
     "query": "node ./convenience/query_stations.mjs bvg",
-    "test": "node --run lint && node --run test:spelling",
+    "test": "node --run lint && node --run test:unit && node --run test:spelling",
+    "test:unit": "node --test tests/**/*.test.js",
     "test:spelling": "cspell ."
   },
   "dependencies": {
