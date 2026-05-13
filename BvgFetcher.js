@@ -102,7 +102,8 @@ module.exports = class BvgFetcher {
 
       if (
         !this.config.excludedTransportationTypes.includes(row.line.product) &&
-        !this.config.ignoredLines.includes(row.line.name)
+        !this.config.ignoredLines.includes(row.line.name) &&
+        !this.config.excludeDirections.includes(row.direction)
       ) {
         const current = {
           when: row.when || row.plannedWhen,
@@ -120,7 +121,7 @@ module.exports = class BvgFetcher {
       }
     });
 
-    departuresData.departuresArray.sort(this.compareTimes);
+    departuresData.departuresArray.sort(BvgFetcher.compareTimes);
     return departuresData;
   }
 

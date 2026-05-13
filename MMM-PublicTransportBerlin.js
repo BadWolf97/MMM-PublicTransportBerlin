@@ -7,6 +7,7 @@ Module.register("MMM-PublicTransportBerlin", {
     stationId: "900160003",             // The ID of the station
     directionStationId: "",             // The stationId of the next station in which direction departures should be shown
     ignoredLines: [],                   // Which lines should be ignored? (comma-separated list of line names)
+    excludeDirections: [],              // Which directions should be ignored? (comma-separated list of directions)
     excludedTransportationTypes: "",    // Which transportation types should not be shown on the mirror? (comma-separated list of types) possible values: bus,tram,suburban,subway,ferry
     marqueeLongDirections: true,        // Use Marquee effect for long station names?
     travelTimeToStation: 10,            // How long do you need to walk/bike to the next Station?
@@ -67,6 +68,11 @@ Module.register("MMM-PublicTransportBerlin", {
       // Handle missing ignored lines
       if (typeof this.config.ignoredLines === "undefined") {
         this.config.ignoredLines = [];
+      }
+
+      // Handle missing excluded directions
+      if (typeof this.config.excludeDirections === "undefined") {
+        this.config.excludeDirections = [];
       }
 
       // set minimum interval to 30 seconds
@@ -416,7 +422,7 @@ Module.register("MMM-PublicTransportBerlin", {
           currentWhen < nowWithDelay &&
           (nextWhen && nextWhen >= nowWithDelay || i === 0 && nextWhen && nextWhen >= nowWithDelay)
         ) {
-          result = i;
+          result = i + 1;
         } else if (i === this.departuresArray.length - 1 && currentWhen < nowWithDelay) {
           throw new Error(this.translate("NO_REACHABLE_DEPARTURES"));
         }
