@@ -89,3 +89,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [2.0.0](https://github.com/deg0nz/MMM-PublicTransportBerlin/compare/v1.7.3...v2.0.0) - 2023-06-20
 
 - chore: Update to `hafas-client@6`
+
+---
+
+The versions before 2.1.3 have to be reconstructed from the git history.
