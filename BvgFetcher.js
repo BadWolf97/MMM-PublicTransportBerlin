@@ -103,7 +103,7 @@ module.exports = class BvgFetcher {
       if (
         !this.config.excludedTransportationTypes.includes(row.line.product) &&
         !this.config.ignoredLines.includes(row.line.name) &&
-        !this.config.ignoredDestinations.includes(row.direction)
+        !this.config.excludeDirections.includes(row.direction)
       ) {
         const current = {
           when: row.when || row.plannedWhen,
