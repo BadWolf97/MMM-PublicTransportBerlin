@@ -1,8 +1,31 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. The versions before 2.1.3 have to be reconstructed from the git history.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [2.2.0](https://github.com/deg0nz/MMM-PublicTransportBerlin/compare/v2.1.12...v2.2.0) (2026-05-13)
+
+
+### Added
+
+* add the option to exclude directions ([#350](https://github.com/deg0nz/MMM-PublicTransportBerlin/issues/350)) ([cdff057](https://github.com/deg0nz/MMM-PublicTransportBerlin/commit/cdff057645ff5e92d12e45c278b5303682f471e8))
+
+
+### Fixed
+
+* **fetcher:** use static comparator for departure sort ([a5b6c63](https://github.com/deg0nz/MMM-PublicTransportBerlin/commit/a5b6c63d6e1e7e40a47b5c466ed931c1ce5310c8))
+* fix wrongly calculated first reachable departure position ([#352](https://github.com/deg0nz/MMM-PublicTransportBerlin/issues/352)) ([86ab952](https://github.com/deg0nz/MMM-PublicTransportBerlin/commit/86ab952e49a6f5731c153946344e99b0ad760457))
+
+
+### Chores
+
+* add release script with commit-and-tag-version ([ea65b91](https://github.com/deg0nz/MMM-PublicTransportBerlin/commit/ea65b918d4dd33d552de0e7514ebc9baec89e162))
+* replace husky with simple-git-hooks ([ec14959](https://github.com/deg0nz/MMM-PublicTransportBerlin/commit/ec14959e3e70832b6a73b0b666aeae4ad598481f))
+* update devDependencies ([2659547](https://github.com/deg0nz/MMM-PublicTransportBerlin/commit/2659547f0f7a709b554d9c2c33168ec640153a62))
+
+
+### Tests
+
+* **fetcher:** add unit tests for filters and options ([bf13f21](https://github.com/deg0nz/MMM-PublicTransportBerlin/commit/bf13f214cf24e9dec9d55480818d6b399ef73294))
 
 ## [2.1.12](https://github.com/deg0nz/MMM-PublicTransportBerlin/compare/v2.1.11...v2.1.12) (2026-03-15)
 
@@ -89,3 +112,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [2.0.0](https://github.com/deg0nz/MMM-PublicTransportBerlin/compare/v1.7.3...v2.0.0) - 2023-06-20
 
 - chore: Update to `hafas-client@6`
+
+---
+
+The versions before 2.1.3 have to be reconstructed from the git history.

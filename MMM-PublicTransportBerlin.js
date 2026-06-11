@@ -7,6 +7,7 @@ Module.register("MMM-PublicTransportBerlin", {
     stationId: "900160003",             // The ID of the station
     directionStationId: "",             // The stationId of the next station in which direction departures should be shown
     ignoredLines: [],                   // Which lines should be ignored? (comma-separated list of line names)
+    excludeDirections: [],              // Which directions should be ignored? (comma-separated list of directions)
     excludedTransportationTypes: "",    // Which transportation types should not be shown on the mirror? (comma-separated list of types) possible values: bus,tram,suburban,subway,ferry
     marqueeLongDirections: true,        // Use Marquee effect for long station names?
     travelTimeToStation: 10,            // How long do you need to walk/bike to the next Station?
@@ -81,6 +82,11 @@ Module.register("MMM-PublicTransportBerlin", {
         this.config.ignoredLines = [];
       }
 
+      // Handle missing excluded directions
+      if (typeof this.config.excludeDirections === "undefined") {
+        this.config.excludeDirections = [];
+      }
+
       // Handle missing replace in directions
       if (typeof this.config.replaceInDirections === "undefined") {
         this.config.replaceInDirections = {};
@@ -91,14 +97,17 @@ Module.register("MMM-PublicTransportBerlin", {
         this.config.noDeparturesText = this.translate("NO_DEPARTURES_AVAILABLE");
       }
 
+      // Handle no reachable Departure text
       if (typeof this.config.noReachableDeparturesText === "undefined" || this.config.noReachableDeparturesText == "") {
         this.config.noReachableDeparturesText = this.translate("NO_REACHABLE_DEPARTURES");
       }
 
+      // Handle no VBB Data text
       if (typeof this.config.noVBBDataText === "undefined" || this.config.noVBBDataText == "") {
         this.config.noVBBDataText = this.translate("NO_VBBDATA_ERROR_HINT");
       }
 
+      // Handle fetcher error text
       if (typeof this.config.fetchErrorText === "undefined" || this.config.fetchErrorText == "") {
         this.config.fetchErrorText = this.translate("FETCHER_ERROR");
       }
@@ -462,7 +471,7 @@ Module.register("MMM-PublicTransportBerlin", {
           currentWhen < nowWithDelay &&
           (nextWhen && nextWhen >= nowWithDelay || i === 0 && nextWhen && nextWhen >= nowWithDelay)
         ) {
-          result = i;
+          result = i + 1;
         } else if (i === this.departuresArray.length - 1 && currentWhen < nowWithDelay) {
           throw new Error(this.config.noReachableDeparturesText);
         }
