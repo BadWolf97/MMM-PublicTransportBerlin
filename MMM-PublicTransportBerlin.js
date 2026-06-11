@@ -422,7 +422,7 @@ Module.register("MMM-PublicTransportBerlin", {
           currentWhen < nowWithDelay &&
           (nextWhen && nextWhen >= nowWithDelay || i === 0 && nextWhen && nextWhen >= nowWithDelay)
         ) {
-          result = i;
+          result = i + 1;
         } else if (i === this.departuresArray.length - 1 && currentWhen < nowWithDelay) {
           throw new Error(this.translate("NO_REACHABLE_DEPARTURES"));
         }
